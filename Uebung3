@@ -1,0 +1,32 @@
+    public void write(List list) throws IOException {
+        FileWriter fw;
+        Element e = list.getBegin();
+        BufferedReader bufferReader;
+        String firstLine;
+
+        try {
+            fw = new FileWriter("C:\\Users\\Michi\\Pictures\\Desktop\\test.csv", true);
+            bufferReader = new BufferedReader(new FileReader("C:\\Users\\Michi\\Pictures\\Desktop\\test.csv"));
+            if ((firstLine = bufferReader.readLine()) != null){
+
+                fw.write("\n");
+                while (e != null) {
+                    fw.write(e.value + ", aaaaaaa");
+                    e = e.getNext();
+
+                }
+            }else{
+                while (e != null) {
+                    fw.write(e.value + ", ");
+                    e = e.getNext();
+
+                }
+            }
+            bufferReader.close();
+            fw.close();
+        } catch (IOException ee) {
+            System.out.println("Fehler beim schreiben");
+//            bufferReader.close();
+//            fw.close();
+        }
+    }
